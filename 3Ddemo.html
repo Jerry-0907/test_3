@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #textbox {
+      position: fixed;
+      width: 300px;
+      height: 300px;
+      top: 20px;
+      right: 20px;
+      background-color: #ffffff;
+      border: 1px solid #000000;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <canvas id="canvas"></canvas>
+    <div>
+      <div id="textbox" v-show="isShow">
+        {{message}}
+      </div>
+    </div>
+
+    <div v-if="true">{{message}}</div>
+
+  </div>
+</body>
+<!-- <script src="./js/three.js"></script> -->
+<script type="importmap">
+    {
+      "imports": {
+        "three": "./node_modules/three/build/three.module.js"
+      }
+    }
+  </script>
+
+<script src="./js/3Ddemo.js" type="module"></script>
+
+</html>

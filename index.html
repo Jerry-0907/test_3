@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>index</title>
+  <link rel="stylesheet" href="css/index.css">
+  <script src="js/echarts.min.js"></script>
+</head>
+
+<body>
+  <header width="2rem" ;length="2rem" ;>
+    <div style="background-color: pink;" width="5rem">ijk</div>nihjjjjjjjjao
+  </header>
+  <button><a href="3Ddemo.html">3d模型</a></button>
+  <h2 width="2rem" length="2rem" font-size="2rem">nihjjjjjjjjao</h2>
+  <div id="mychart" style="height: 500px;"></div>
+  <div id="mychart1" style="height: 500px;background-color: pink;"></div>
+  <div class="box"></div>
+  <div id="map" style="width: 600px; height: 400px;"></div>
+</body>
+<script>
+  var chartDom = document.getElementById('mychart');
+  var myChart = echarts.init(chartDom);
+
+  option = {
+    title: {
+      text: '图表1',
+      textStyle: {
+        color: 'rgba(0,0,0,0.8)',
+        fontStyle: 'oblique',
+      }
+    },
+    legend: {
+      right: '20%'
+    },
+    grid: {
+      right: '5%',
+      left: '5%',
+      containLabel: true,
+      showContent: true,
+      show: true,
+      borderColor: '#ccc',
+      borderWidth: '10px',
+    },
+    tooltip: {
+      trigger: 'axis',
+
+    },
+    toolbox: {
+      feature: {
+        saveAsImage: {}
+      }
+
+    },
+    xAxis: {
+      type: 'category',
+      boundaryGap: true,
+      data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+      axisTick: false,
+      axisLabel: {
+        textStyle: {
+          color: '#ccf',
+          fontSize: 26,
+
+        }
+      },
+    },
+    yAxis: {
+      type: 'value'
+    },
+    series: [
+      {
+        name: "123",
+        data: [150, 230, 224, 218, 135, 147, 260],
+        type: 'line',
+        smooth: true
+      }
+    ]
+  };
+  myChart.setOption(option);
+  window.addEventListener("resize", function () {
+    myChart.resize()
+  })
+  window.addEventListener('resize', myChart.resize);
+</script>
+<script>
+  (function () {
+
+    var chartDom = document.getElementById('mychart1');
+    var myChart = echarts.init(chartDom);
+
+    var option = {
+      grid: {
+        top: "10%",
+        left: "22%",
+        bottom: "10%",
+      }
+    };
+
+    myChart.setOption(option);
+    window.addEventListener("resize", function () {
+      myChart.resize()
+    })
+    window.addEventListener('resize', myChart.resize);
+  })();
+</script>
+<script>
+  // 初始化 ECharts 实例
+  var myChart = echarts.init(document.getElementById('map'));
+
+  // 地图数据的引入
+  // 以下示例为中国地图的数据
+  // 你需要根据你的需求，替换成你想要显示的地图数据
+  echarts.registerMap('china', {
+    "type": "FeatureCollection",
+    "features": [
+      
+      // 这里是地图数据的具体内容
+      {
+      "type": "Feature",
+      "properties": {
+        "name": "北京市"
+        // 可以添加其他属性信息
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          // 北京市的边界坐标
+          [
+            [116.1958, 40.0250],
+            [116.1698, 40.0423],
+            // 其他坐标点
+          ]
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "上海市"
+        // 可以添加其他属性信息
+      },
+      "geometry": {
+        "type": "Polygon",
+        "coordinates": [
+          // 上海市的边界坐标
+          [
+            [121.3688, 31.1043],
+            [121.4879, 31.2367],
+            // 其他坐标点
+          ]
+        ]
+      }
+    },
+
+    ]
+  });
+
+  // 配置 ECharts 实例
+  var option = {
+    geo: {
+      map: 'china',
+    },
+    title: {
+      text: '中国地图示例'
+    },
+    tooltip: {
+      trigger: 'item',
+      formatter: '{b}'
+    },
+    series: [{
+      name: '中国地图',
+      type: 'map',
+      map: 'china',
+      roam: true,
+      selectedMode: 'single',
+      label: {
+        show: true
+      },
+      itemStyle: {
+        emphasis: {
+          label: {
+            show: true
+          }
+        }
+      },
+      // 其他配置选项...
+    }]
+  };
+
+  // 使用配置项显示地图
+  myChart.setOption(option);
+</script>
+<script src="js/echarts.min.js"></script>
+<script src="js/flexible.js"></script>
+
+</html>
